@@ -7,10 +7,10 @@ all: $(TARGET).c $(AUXC).c
 	$(CC) $(CFLAGS) -o $(AUXC) $(AUXC).c
 	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c
 
-run: $(TARGET)
+run: $(TARGET) $(AUXC)
 	./$(AUXC) | grep intr | cut -d' ' -f2-37 | ./$(TARGET) | aplay
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(AUXC)
 
 .PHONY: clean all
